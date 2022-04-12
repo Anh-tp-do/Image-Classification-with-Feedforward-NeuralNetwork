@@ -14,12 +14,12 @@ from torchvision.datasets import ImageFolder
 from tqdm.notebook import tqdm
 %matplotlib inline
 
-//---------------- Use the block of code below if you import data image straight on Kaggle
+#---------------- Use the block of code below if you import data image straight on Kaggle
 import os
 for dirname, _, filenames in os.walk('/kaggle/input'):
     for filename in filenames:
         print(os.path.join(dirname, filename))
-//-----------------
+#-----------------
 
 DATA_DIR = '../input/10-monkey-species'
 
@@ -42,8 +42,8 @@ transform = transforms.Compose ([ transforms.Resize(size=(256,256) , interpolati
 train_dataset = ImageFolder ( TRAIN_DIR , transform=transform )
 val_dataset = ImageFolder ( VAL_DIR , transform=transform )
 
-// print(train_dataset.classes)
-//len(train_dataset)
+#print(train_dataset.classes)
+#len(train_dataset)
 
 def show_example(img, label):
     print('Label: ', train_dataset.classes[label], "("+str(label)+")")
@@ -144,11 +144,11 @@ def fit(epochs, lr, model, train_loader, val_loader, opt_func=torch.optim.SGD):
         history.append(result)
     return history
 
-//for t in model.parameters():
-//    print(t.shape)
+#for t in model.parameters():
+#    print(t.shape)
 
-//history = [evaluate(model, val_loader)]
-//history
+#history = [evaluate(model, val_loader)]
+#history
 
 history += fit(5, 0.05, model, train_loader, val_loader)
 history += fit(5, 0.2, model, train_loader, val_loader)
